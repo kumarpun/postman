@@ -34,10 +34,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://{{ENTHU_API_DOMAIN}}/graphql",
+					"raw": "https://api-staging.env.enthu.com/graphql",
 					"protocol": "https",
 					"host": [
-						"{{ENTHU_API_DOMAIN}}"
+						"api-staging.env.enthu.com"
 					],
 					"path": [
 						"graphql"
