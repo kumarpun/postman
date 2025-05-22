@@ -1,27 +1,24 @@
-name: Run Postman Tests
+name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ main ]
+    branches: [ "master" ]
+
+  workflow_dispatch:
 
 jobs:
-  postman-tests:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-    - name: Install Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
+      - name: Run a one-line script
+        run: echo Hello, world!
 
-    - name: Install Newman
-      run: npm install -g newman
-
-    - name: Run Postman Collection
-      run: |
-        newman run admin/login.json
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
