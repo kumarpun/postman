@@ -25,4 +25,4 @@ jobs:
 
       - name: Run Postman Collection
         run: |
-          newman run admin/login.json
+          newman run admin/admin.json
