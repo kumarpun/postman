@@ -85,7 +85,7 @@
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
-							"pm.test('Batch is created with name \"Test meeting batch9\"', function () {",
+							"pm.test('Batch is created with name \"Test meeting from CI\"', function () {",
 							"    pm.expect(pm.response.json().data.createBatchV2.result.name).to.eql(\"Test meeting batch10\");",
 							"});",
 							"",
