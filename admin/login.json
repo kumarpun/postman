@@ -1,0 +1,50 @@
+{
+	"info": {
+		"_postman_id": "875eaa83-7d89-4865-9527-2d0d8b0586cf",
+		"name": "Admin graphql",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13997388",
+		"_collection_link": "https://zoom-team-0926.postman.co/workspace/Main~e4cd30fd-6afa-4ed5-8e4c-b1c9436e1d40/collection/13997388-875eaa83-7d89-4865-9527-2d0d8b0586cf?action=share&source=collection_link&creator=13997388"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation Login($email: String!, $password: String!) {\n  loginWithEmail(email: $email, password: $password) {\n    messages {\n      code\n      field\n      message\n      options {\n        key\n        value\n      }\n      template\n    }\n    result {\n      token {\n        access\n        refresh\n      }\n      user {\n        status\n        email\n        emailVerified\n        id\n        userEducationCount\n        userExperienceCount\n        userTagCount\n        parentId\n        phoneNumber\n        insertedAt\n        appDownloaded\n        phoneNumberVerified\n        familyMembers {\n          family {\n            status\n            title\n            id\n            familyMembers {\n              status\n              id\n            }\n          }\n          status\n          role\n          id\n        }\n        roles\n        role\n        permissions\n        username\n        zohoRecruitId\n        zohoCrmId\n        chatUserId\n        publicUserId\n        appLastActiveData {\n          lastActiveDatetime\n          isActiveInLastFifteenDays\n          deviceType\n        }\n        entityTags {\n          entityId\n          entityType\n          id\n          value\n        }\n        roleAssignments {\n          activationDate\n          country\n          expirationDate\n          id\n          isArchived\n          module\n          role\n          userId\n        }\n        profile {\n          avatarUrl\n          bio\n          dob\n          lName\n          fName\n          fullName\n          timezoneData {\n            zoneName\n            id\n          }\n          gender\n          location {\n            country\n          }\n          userProfileLanguages {\n            language {\n              name\n            }\n            listening\n            reading\n            speaking\n            writing\n          }\n          userSocialLinks {\n            platform\n            url\n          }\n        }\n        country {\n          emoji\n          name\n          id\n        }\n        currentLocation {\n          emoji\n          name\n        }\n        host {\n          id\n          supportChatGroup {\n            clubMembers {\n              user {\n                id\n              }\n            }\n            channelUrl\n          }\n        }\n        upvoteCounts\n        userMembership {\n          membership {\n            title\n          }\n        }\n        profile {\n          avatarUrl\n          bio\n          dob\n          lName\n          fName\n          fullName\n          timezoneData {\n            zoneName\n            id\n          }\n          gender\n          location {\n            country\n          }\n          userProfileLanguages {\n            language {\n              name\n            }\n            listening\n            reading\n            speaking\n            writing\n          }\n          userSocialLinks {\n            platform\n            url\n          }\n        }\n      }\n    }\n    successful\n  }\n}\n",
+						"variables": "{\n  \"email\": \"test@enthu.com\",\n  \"password\": \"Test@1234\"\n}"
+					}
+				},
+				"url": {
+					"raw": "https://{{ENTHU_API_DOMAIN}}/graphql",
+					"protocol": "https",
+					"host": [
+						"{{ENTHU_API_DOMAIN}}"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
