@@ -1,4 +1,4 @@
-name: CI
+name: Postman test
 
 on:
   push:
@@ -14,11 +14,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
 
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Install Newman
+        run: npm install -g newman
 
-      - name: Run a multi-line script
+      - name: Run Postman Collection
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          newman run admin/login.json
