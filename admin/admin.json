@@ -85,8 +85,8 @@
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
-							"pm.test('Batch is created with name \"Test meeting from CI\"', function () {",
-							"    pm.expect(pm.response.json().data.createBatchV2.result.name).to.eql(\"Test meeting from CI\");",
+							"pm.test('Batch is created with name \"Test meeting batch9\"', function () {",
+							"    pm.expect(pm.response.json().data.createBatchV2.result.name).to.eql(\"Test meeting batch10\");",
 							"});",
 							"",
 							"",
@@ -132,7 +132,385 @@
 					"mode": "graphql",
 					"graphql": {
 						"query": "mutation CreateBatchV2($displayName: String, $batchType: BatchType, $ageCategories: [ID], $duration: Int, $entityId: ID, $entityType: BatchEntityType, $externalDescription: String, $goals: [BatchGoalInput], $internalDescription: String, $name: String, $numSession: Int, $orderLineItemId: ID, $schedules: [ScheduleInputV2], $settings: BatchSettingsInput, $startDate: Date, $timezone: String, $users: [UserBatchInput]) {\n  createBatchV2(\n    displayName: $displayName\n    batchType: $batchType\n    duration: $duration\n    entityId: $entityId\n    entityType: $entityType\n    externalDescription: $externalDescription\n    goals: $goals\n    internalDescription: $internalDescription\n    name: $name\n    ageCategories: $ageCategories\n    numSession: $numSession\n    orderLineItemId: $orderLineItemId\n    schedules: $schedules\n    settings: $settings\n    startDate: $startDate\n    timezone: $timezone\n    users: $users\n  ) {\n    messages {\n      code\n      field\n      message\n      options {\n        key\n        value\n      }\n      template\n    }\n    result {\n      batchType\n      courseTemplate {\n        name\n        level\n        category {\n          id\n          lft\n          parentCategoryId\n          rgt\n          status\n          title\n          displayName\n        }\n        courseSessionTopics {\n          id\n          sessionName\n          status\n          sequenceNumber\n          topics {\n            baseTopic\n            duration\n            topicTitle\n          }\n        }\n      }\n      course {\n        category {\n          id\n          lft\n          parentCategoryId\n          rgt\n          status\n          title\n          displayName\n        }\n      }\n      id\n      progress\n      isActive\n      isTrialClass\n      trustpilotEnabled\n      name\n      displayName\n      internalDescription\n      noOfSession\n      price\n      orderLineItems {\n        batch {\n          product {\n            title\n          }\n        }\n        amount\n        courseTemplate {\n          name\n          level\n          category {\n            id\n            lft\n            parentCategoryId\n            rgt\n            status\n            title\n            displayName\n          }\n          courseSessionTopics {\n            id\n            sessionName\n            status\n            sequenceNumber\n            topics {\n              baseTopic\n              duration\n              topicTitle\n            }\n          }\n        }\n        discount {\n          label\n        }\n        product {\n          title\n        }\n        offer {\n          productV2 {\n            title\n          }\n          batch {\n            product {\n              title\n            }\n            course {\n              title\n            }\n          }\n        }\n        entityType\n        id\n        isAssigned\n        name\n        order {\n          amount\n          id\n          status\n          user {\n            email\n            id\n            profile {\n              avatarUrl\n              bio\n              dob\n              fullName\n              timezone\n            }\n            phoneNumber\n            username\n          }\n        }\n        createdBy {\n          email\n          id\n          profile {\n            fullName\n          }\n        }\n        recipients {\n          email\n          id\n        }\n      }\n      priceWithCurrency {\n        amount\n        currency\n      }\n      schedules {\n        day\n        endTime\n        id\n        repeat\n        startTime\n      }\n      startDate\n      endDate\n      status\n      totalUsers\n      userBatch {\n        id\n        role\n        status\n        lastSessionDateTime\n        roomsCountByProgress {\n          total\n        }\n        user {\n          appLastActiveData {\n            lastActiveDatetime\n            isActiveInLastFifteenDays\n          }\n          currentLocation {\n            name\n            emoji\n            id\n          }\n          id\n          email\n          phoneNumber\n          username\n          familyMembers {\n            id\n            status\n            family {\n              status\n              title\n              id\n              familyMembers {\n                status\n                relationship\n                id\n                user {\n                  appDownloaded\n                  email\n                  phoneNumber\n                  username\n                  profile {\n                    fullName\n                    avatarUrl\n                    dob\n                    gender\n                  }\n                }\n              }\n            }\n            relationship\n          }\n          appActivity(limit: 1, sortByUpdatedAt: DESC) {\n            appVersion\n            updatedAt\n          }\n          profile {\n            fullName\n            avatarUrl\n            dob\n            gender\n          }\n          appDownloaded\n        }\n      }\n      rooms {\n        capacity\n        endDate\n        notes\n        roomUsersCount\n        roomUsers {\n          id\n          cost\n          isTrial\n          role\n          id\n        }\n        roomUserAggregate {\n          count\n          role\n        }\n        meetingAggregates {\n          totalPresentDuration\n          reviewStatus\n          role\n          attendanceStatus\n          user {\n            appDownloaded\n            profile {\n              fullName\n              avatarUrl\n              userDeskDetail {\n                hasDeskSetup\n                userDeskDetailDevices {\n                  deviceType\n                }\n              }\n            }\n          }\n        }\n        meetingId\n        reason\n        description\n        recordingStatus\n        roomType\n        roomStatus\n        id\n        startDate\n        createdBy {\n          username\n          id\n          email\n          profile {\n            avatarUrl\n            fullName\n          }\n        }\n        insertedAt\n        status\n        userInRoom\n        userRole\n        hostSummary {\n          msgText\n          entityType\n        }\n        userSummary {\n          msgText\n          entityType\n        }\n        title\n        topic {\n          title\n          description\n        }\n        type\n        roomRescheduleRecordCount\n        roomRescheduleRecords {\n          id\n          reason\n          prevEndDate\n          prevStartDate\n          startDate\n          endDate\n          updatedAt\n          requestedById\n          updatedBy {\n            email\n            username\n            profile {\n              fullName\n            }\n          }\n          requestedBy {\n            email\n            profile {\n              fullName\n            }\n          }\n        }\n        recordings {\n          format\n          id\n          recEndedAt\n          recStartedAt\n          recordingUrl\n          size\n          status\n          view\n          metadata\n          cloudProvider\n          fullRecordingUrl\n        }\n        meetingInstance {\n          info {\n            meetingId\n          }\n          streamProvider {\n            streamProvider\n            account\n          }\n        }\n        id\n        roomUserAggregate {\n          count\n        }\n        roomUpdateEvents {\n          updatedAt\n          info\n          eventType\n          user {\n            email\n            profile {\n              fullName\n            }\n          }\n        }\n        batch {\n          timezone\n          displayName\n          name\n          id\n          userBatch {\n            user {\n              id\n              email\n              profile {\n                fullName\n              }\n            }\n          }\n        }\n        recordings {\n          format\n          id\n          recEndedAt\n          recStartedAt\n          recordingUrl\n          size\n          status\n          view\n          metadata\n          cloudProvider\n          fullRecordingUrl\n        }\n        topic {\n          title\n        }\n        rescheduledFor {\n          reason\n          roomUpdateEvents {\n            eventType\n            info\n            updatedAt\n            user {\n              email\n              profile {\n                fullName\n              }\n            }\n          }\n        }\n      }\n      zohoProjectTaskUrl\n      zohoProjectTaskId\n      zohoCrmBatchId\n      insertedBy {\n        profile {\n          fullName\n        }\n        email\n      }\n    }\n    successful\n  }\n}\n",
-						"variables": "{\n  \"startDate\": \"{{tomorrowDate}}\",\n  \"numSession\": 1,\n  \"duration\": 10,\n  \"schedules\": [\n    {\n      \"day\": \"{{tomorrowDay}}\",\n      \"startTime\": \"17:00:00\"\n    }\n  ],\n  \"name\": \"Test meeting from CI\",\n  \"batchType\": \"ONE_ON_ONE\",\n  \"timezone\": \"Asia/Katmandu\",\n  \"internalDescription\": \"Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch \",\n  \"entityId\": \"be7cb1a3-e2ba-4549-b59b-281a2ba5444b\",\n  \"entityType\": \"PRODUCT\",\n  \"goals\": {\n    \"text\": \"Test meeting batch\",\n    \"startsFrom\": \"2025-05-15T06:55:35.057Z\",\n    \"endsAt\": \"2025-05-15T06:55:35.059Z\"\n  },\n  \"ageCategories\": [\n    \"32fca51d-cef9-42c2-8ff2-992255ed8655\",\n    \"9729db5a-a58c-47ad-8698-b5d498ae2678\",\n    \"83e80a89-7163-4656-b7b2-b63ef115f310\",\n    \"de4caad7-2d1f-48fb-8593-5c5b4ca411f0\",\n    \"6395b44d-5cea-4c7a-999a-9348418f04ed\",\n    \"04fb4fcd-d176-4225-9175-b80ec7a16728\",\n    \"1d673361-84b2-4162-97ec-e4d46f695330\",\n    \"6d7eee8e-8e8e-4cec-b7bc-ba101926fa3e\"\n  ]\n}"
+						"variables": "{\n  \"startDate\": \"{{tomorrowDate}}\",\n  \"numSession\": 1,\n  \"duration\": 10,\n  \"schedules\": [\n    {\n      \"day\": \"{{tomorrowDay}}\",\n      \"startTime\": \"17:00:00\"\n    }\n  ],\n  \"name\": \"Test meeting batch10\",\n  \"batchType\": \"ONE_ON_ONE\",\n  \"timezone\": \"Asia/Katmandu\",\n  \"internalDescription\": \"Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch Test meeting batch \",\n  \"entityId\": \"be7cb1a3-e2ba-4549-b59b-281a2ba5444b\",\n  \"entityType\": \"PRODUCT\",\n  \"goals\": {\n    \"text\": \"Test meeting batch\",\n    \"startsFrom\": \"2025-05-15T06:55:35.057Z\",\n    \"endsAt\": \"2025-05-15T06:55:35.059Z\"\n  },\n  \"ageCategories\": [\n    \"32fca51d-cef9-42c2-8ff2-992255ed8655\",\n    \"9729db5a-a58c-47ad-8698-b5d498ae2678\",\n    \"83e80a89-7163-4656-b7b2-b63ef115f310\",\n    \"de4caad7-2d1f-48fb-8593-5c5b4ca411f0\",\n    \"6395b44d-5cea-4c7a-999a-9348418f04ed\",\n    \"04fb4fcd-d176-4225-9175-b80ec7a16728\",\n    \"1d673361-84b2-4162-97ec-e4d46f695330\",\n    \"6d7eee8e-8e8e-4cec-b7bc-ba101926fa3e\"\n  ]\n}"
+					}
+				},
+				"url": {
+					"raw": "https://api-staging.env.enthu.com/graphql",
+					"protocol": "https",
+					"host": [
+						"api-staging",
+						"env",
+						"enthu",
+						"com"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListPaginatedBatches",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query ListPaginatedBatches($filter: BatchBoolExpr, $paginationOpts: PaginationOpts) {\n  listPaginatedBatches(filter: $filter, paginationOpts: $paginationOpts) {\n    pageInfo {\n      after\n      totalCount\n      before\n      hasNextPage\n      limit\n    }\n    result {\n      id\n      courseTemplate {\n        name\n      }\n      entityTags {\n        value\n        entityType\n        id\n        entityId\n      }\n      course {\n        title\n      }\n      product {\n        title\n      }\n      zohoProjectTaskUrl\n      isTrialClass\n      name\n      displayName\n      userBatch {\n        role\n        status\n      }\n      progress\n      batchType\n      startDate\n      status\n      noOfSession\n      rooms {\n        status\n      }\n      numOfUpcomingSessions\n      zohoProjectTaskId\n      zohoCrmBatchId\n      insertedBy {\n        id\n        country {\n          name\n          emoji\n        }\n        currentLocation {\n          name\n          emoji\n        }\n        username\n        profile {\n          fullName\n          avatarUrl\n        }\n        email\n      }\n    }\n  }\n}\n",
+						"variables": "{\n  \"filter\": {\n    \"withBatchProgress\": [\n      \"NOT_STARTED\",\n      \"ON_GOING\"\n    ],\n    \"batchStatus\": [\n      \"STOP_MARKETING\",\n      \"CREATED\"\n    ],\n    \"hasBatchType\": [\n      \"N_ON_ONE\",\n      \"ONE_ON_ONE\",\n      \"TWO_ON_ONE\"\n    ]\n  },\n  \"paginationOpts\": {}\n}"
+					}
+				},
+				"url": {
+					"raw": "https://api-staging.env.enthu.com/graphql",
+					"protocol": "https",
+					"host": [
+						"api-staging",
+						"env",
+						"enthu",
+						"com"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listMyBatch",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query ListPaginatedBatches($filter: BatchBoolExpr, $paginationOpts: PaginationOpts) {\n  listPaginatedBatches(filter: $filter, paginationOpts: $paginationOpts) {\n    pageInfo {\n      after\n      totalCount\n      before\n      hasNextPage\n      limit\n    }\n    result {\n      id\n      courseTemplate {\n        name\n      }\n      entityTags {\n        value\n        entityType\n        id\n        entityId\n      }\n      course {\n        title\n      }\n      product {\n        title\n      }\n      zohoProjectTaskUrl\n      isTrialClass\n      name\n      displayName\n      userBatch {\n        role\n        status\n      }\n      progress\n      batchType\n      startDate\n      status\n      noOfSession\n      rooms {\n        status\n      }\n      numOfUpcomingSessions\n      zohoProjectTaskId\n      zohoCrmBatchId\n      insertedBy {\n        id\n        country {\n          name\n          emoji\n        }\n        currentLocation {\n          name\n          emoji\n        }\n        username\n        profile {\n          fullName\n          avatarUrl\n        }\n        email\n      }\n    }\n  }\n}\n",
+						"variables": "{\n  \"filter\": {\n    \"withBatchProgress\": [\n      \"NOT_STARTED\",\n      \"ON_GOING\"\n    ],\n    \"batchStatus\": [\n      \"STOP_MARKETING\",\n      \"CREATED\"\n    ],\n    \"hasBatchType\": [\n      \"N_ON_ONE\",\n      \"ONE_ON_ONE\",\n      \"TWO_ON_ONE\"\n    ],\n    \"withUserId\": [\n      \"790b01d4-f882-4606-9e24-cc68fcfe91ea\"\n    ]\n  },\n  \"paginationOpts\": {}\n}"
+					}
+				},
+				"url": {
+					"raw": "https://api-staging.env.enthu.com/graphql",
+					"protocol": "https",
+					"host": [
+						"api-staging",
+						"env",
+						"enthu",
+						"com"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "globalSession",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query listRoomsPaginated($filter: RoomFilter, $paginationOpts: RoomPaginationOpts) {\n  listRoomsPaginated(filter: $filter, paginationOpts: $paginationOpts) {\n    pageInfo {\n      after\n      totalCount\n      before\n      hasNextPage\n      limit\n    }\n    result {\n      id\n      meetingInstance {\n        bookedAt\n        endedAt\n        info {\n          duration\n          meetingId\n        }\n        streamProvider {\n          name\n          isActive\n          account\n          streamProvider\n        }\n      }\n      reason\n      notes\n      settings {\n        recording\n      }\n      description\n      title\n      startDate\n      roomRescheduleRecordCount\n      endDate\n      roomStatus\n      roomUsersCount\n      roomType\n      insertedAt\n      createdBy {\n        id\n        username\n        email\n        profile {\n          fullName\n          avatarUrl\n        }\n      }\n      roomUserAggregate {\n        count\n        role\n      }\n      roomRescheduleRecords {\n        endDate\n        id\n        prevEndDate\n        prevStartDate\n        reason\n        requestedBy {\n          id\n          username\n          email\n          profile {\n            fullName\n            avatarUrl\n          }\n        }\n        requestedById\n        startDate\n        updatedAt\n        room {\n          userRole\n        }\n        updatedBy {\n          username\n          email\n          profile {\n            fullName\n          }\n        }\n      }\n      meetingAggregates {\n        id\n        hasInbetweenEventsIssue\n        totalLossDuration\n        inbetweenLossDuration\n        attendanceStatus\n        reviewStatus\n        role\n        note\n        userSummary {\n          id\n          msgText\n        }\n        totalPresentDuration\n        user {\n          appLastActiveData {\n            isActiveInLastFifteenDays\n          }\n          country {\n            emoji\n            name\n          }\n          currentLocation {\n            emoji\n            name\n          }\n          id\n          email\n          username\n          appDownloaded\n          profile {\n            dob\n            gender\n            fullName\n            avatarUrl\n            userDeskDetail {\n              hasDeskSetup\n            }\n          }\n        }\n      }\n      hostSummary {\n        msgText\n        entityType\n      }\n      type\n      batch {\n        id\n        name\n        displayName\n        course {\n          title\n        }\n        courseTemplate {\n          name\n        }\n        product {\n          title\n        }\n      }\n      recordings {\n        format\n        id\n        recEndedAt\n        recStartedAt\n        recordingUrl\n        size\n        status\n        view\n        metadata\n        cloudProvider\n        fullRecordingUrl\n      }\n    }\n  }\n}\n",
+						"variables": "{\n  \"filter\": {\n    \"startDate\": [\n      \">= 2025-05-23T00:00:00+05:45\"\n    ],\n    \"endDate\": [\n      \"<= 2025-05-23T23:59:59+05:45\"\n    ]\n  },\n  \"paginationOpts\": {\n    \"limit\": 20,\n    \"sortDirection\": \"ASC\",\n    \"cursorFields\": [\n      \"START_DATE\",\n      \"ID\"\n    ]\n  }\n}"
+					}
+				},
+				"url": {
+					"raw": "https://api-staging.env.enthu.com/graphql",
+					"protocol": "https",
+					"host": [
+						"api-staging",
+						"env",
+						"enthu",
+						"com"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "activityLogs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query ListActivityLogs($filter: ActivityLogFilter, $paginationOpts: PaginationOpts) {\n  listActivityLogs(filter: $filter, paginationOpts: $paginationOpts) {\n    pageInfo {\n      after\n      totalCount\n      before\n      hasNextPage\n      limit\n    }\n    result {\n      eventType\n      id\n      info\n      insertedAt\n      message\n      targetId\n      targetType\n      updatedAt\n      user {\n        id\n        email\n        phoneNumber\n        username\n        profile {\n          avatarUrl\n          fullName\n        }\n        userMembership {\n          membership {\n            title\n          }\n        }\n      }\n      userBatchRole\n      userId\n      room {\n        id\n        batchId\n      }\n    }\n  }\n}\n",
+						"variables": "{\n  \"filter\": {\n    \"withEventType\": [\n      \"ZOOM_MEETING_PARTICIPANT_JOINED\",\n      \"ZOOM_MEETING_PARTICIPANT_JOINED_BEFORE_HOST\",\n      \"ZOOM_MEETING_PARTICIPANT_LEFT\",\n      \"ZOOM_MEETING_STARTED\",\n      \"ZOOM_RECORDING_COMPLETED\"\n    ],\n    \"withUserBatchRole\": [\n      \"HOST\"\n    ]\n  },\n  \"paginationOpts\": {}\n}"
+					}
+				},
+				"url": {
+					"raw": "https://api-staging.env.enthu.com/graphql",
+					"protocol": "https",
+					"host": [
+						"api-staging",
+						"env",
+						"enthu",
+						"com"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listTestimonial",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query ListTestimonialsUser($filter: TestimonialFilter, $paginationOpts: PaginationOpts) {\n  listTestimonialsUser(filter: $filter, paginationOpts: $paginationOpts) {\n    pageInfo {\n      after\n      totalCount\n      before\n      hasNextPage\n      limit\n    }\n    result {\n      id\n      description\n      entityId\n      entityType\n      userId\n      batch {\n        product {\n          category {\n            title\n            displayName\n          }\n        }\n      }\n      batchId\n      info {\n        name\n        avatar\n      }\n      givenBy {\n        email\n        currentLocation {\n          name\n          emoji\n        }\n        id\n        username\n        profile {\n          fullName\n          userId\n          id\n          avatarUrl\n        }\n      }\n      givenTo {\n        currentLocation {\n          name\n          emoji\n        }\n        email\n        username\n        id\n        profile {\n          fullName\n          avatarUrl\n          userId\n          id\n        }\n      }\n      insertedAt\n      updatedAt\n      rating\n      status\n      entityUser {\n        email\n        profile {\n          fullName\n        }\n      }\n      user {\n        email\n        profile {\n          fullName\n        }\n      }\n    }\n  }\n}\n",
+						"variables": "{\n  \"paginationOpts\": {\n    \"limit\": 20\n  },\n  \"filter\": {\n    \"withStatus\": [\n      \"ACTIVE\"\n    ]\n  }\n}"
+					}
+				},
+				"url": {
+					"raw": "https://api-staging.env.enthu.com/graphql",
+					"protocol": "https",
+					"host": [
+						"api-staging",
+						"env",
+						"enthu",
+						"com"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listBidding",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query ListAllBidProcesses($filter: BidProcessFilter, $paginationOpts: PaginationOpts) {\n  listAllBidProcesses(filter: $filter, paginationOpts: $paginationOpts) {\n    pageInfo {\n      after\n      totalCount\n      before\n      hasNextPage\n      limit\n    }\n    result {\n      accessType\n      appliersCount\n      batch {\n        batchType\n        courseTemplate {\n          name\n          level\n          category {\n            id\n            lft\n            parentCategoryId\n            rgt\n            status\n            title\n            displayName\n          }\n          courseSessionTopics {\n            id\n            sessionName\n            status\n            sequenceNumber\n            topics {\n              baseTopic\n              duration\n              topicTitle\n            }\n          }\n        }\n        course {\n          category {\n            id\n            lft\n            parentCategoryId\n            rgt\n            status\n            title\n            displayName\n          }\n        }\n        id\n        progress\n        isActive\n        isTrialClass\n        trustpilotEnabled\n        name\n        displayName\n        internalDescription\n        noOfSession\n        price\n        orderLineItems {\n          batch {\n            product {\n              title\n            }\n          }\n          amount\n          courseTemplate {\n            name\n            level\n            category {\n              id\n              lft\n              parentCategoryId\n              rgt\n              status\n              title\n              displayName\n            }\n            courseSessionTopics {\n              id\n              sessionName\n              status\n              sequenceNumber\n              topics {\n                baseTopic\n                duration\n                topicTitle\n              }\n            }\n          }\n          discount {\n            label\n          }\n          product {\n            title\n          }\n          offer {\n            productV2 {\n              title\n            }\n            batch {\n              product {\n                title\n              }\n              course {\n                title\n              }\n            }\n          }\n          entityType\n          id\n          isAssigned\n          name\n          order {\n            amount\n            id\n            status\n            user {\n              email\n              id\n              profile {\n                avatarUrl\n                bio\n                dob\n                fullName\n                timezone\n              }\n              phoneNumber\n              username\n            }\n          }\n          createdBy {\n            email\n            id\n            profile {\n              fullName\n            }\n          }\n          recipients {\n            email\n            id\n          }\n        }\n        priceWithCurrency {\n          amount\n          currency\n        }\n        schedules {\n          day\n          endTime\n          id\n          repeat\n          startTime\n        }\n        startDate\n        endDate\n        status\n        totalUsers\n        userBatch {\n          id\n          role\n          status\n          lastSessionDateTime\n          roomsCountByProgress {\n            total\n          }\n          user {\n            appLastActiveData {\n              lastActiveDatetime\n              isActiveInLastFifteenDays\n            }\n            currentLocation {\n              name\n              emoji\n              id\n            }\n            id\n            email\n            phoneNumber\n            username\n            familyMembers {\n              id\n              status\n              family {\n                status\n                title\n                id\n                familyMembers {\n                  status\n                  relationship\n                  id\n                  user {\n                    appDownloaded\n                    email\n                    phoneNumber\n                    username\n                    profile {\n                      fullName\n                      avatarUrl\n                      dob\n                      gender\n                    }\n                  }\n                }\n              }\n              relationship\n            }\n            appActivity(limit: 1, sortByUpdatedAt: DESC) {\n              appVersion\n              updatedAt\n            }\n            profile {\n              fullName\n              avatarUrl\n              dob\n              gender\n            }\n            appDownloaded\n          }\n        }\n        rooms {\n          capacity\n          endDate\n          notes\n          roomUsersCount\n          roomUsers {\n            id\n            cost\n            isTrial\n            role\n            id\n          }\n          roomUserAggregate {\n            count\n            role\n          }\n          meetingAggregates {\n            totalPresentDuration\n            reviewStatus\n            role\n            attendanceStatus\n            user {\n              appDownloaded\n              profile {\n                fullName\n                avatarUrl\n                userDeskDetail {\n                  hasDeskSetup\n                  userDeskDetailDevices {\n                    deviceType\n                  }\n                }\n              }\n            }\n          }\n          meetingId\n          reason\n          description\n          recordingStatus\n          roomType\n          roomStatus\n          id\n          startDate\n          createdBy {\n            username\n            id\n            email\n            profile {\n              avatarUrl\n              fullName\n            }\n          }\n          insertedAt\n          status\n          userInRoom\n          userRole\n          hostSummary {\n            msgText\n            entityType\n          }\n          userSummary {\n            msgText\n            entityType\n          }\n          title\n          topic {\n            title\n            description\n          }\n          type\n          roomRescheduleRecordCount\n          roomRescheduleRecords {\n            id\n            reason\n            prevEndDate\n            prevStartDate\n            startDate\n            endDate\n            updatedAt\n            requestedById\n            updatedBy {\n              email\n              username\n              profile {\n                fullName\n              }\n            }\n            requestedBy {\n              email\n              profile {\n                fullName\n              }\n            }\n          }\n          recordings {\n            format\n            id\n            recEndedAt\n            recStartedAt\n            recordingUrl\n            size\n            status\n            view\n            metadata\n            cloudProvider\n            fullRecordingUrl\n          }\n          meetingInstance {\n            info {\n              meetingId\n            }\n            streamProvider {\n              streamProvider\n              account\n            }\n          }\n          id\n          roomUserAggregate {\n            count\n          }\n          roomUpdateEvents {\n            updatedAt\n            info\n            eventType\n            user {\n              email\n              profile {\n                fullName\n              }\n            }\n          }\n          batch {\n            timezone\n            displayName\n            name\n            id\n            userBatch {\n              user {\n                id\n                email\n                profile {\n                  fullName\n                }\n              }\n            }\n          }\n          recordings {\n            format\n            id\n            recEndedAt\n            recStartedAt\n            recordingUrl\n            size\n            status\n            view\n            metadata\n            cloudProvider\n            fullRecordingUrl\n          }\n          topic {\n            title\n          }\n          rescheduledFor {\n            reason\n            roomUpdateEvents {\n              eventType\n              info\n              updatedAt\n              user {\n                email\n                profile {\n                  fullName\n                }\n              }\n            }\n          }\n        }\n        zohoProjectTaskUrl\n        zohoProjectTaskId\n        zohoCrmBatchId\n        insertedBy {\n          profile {\n            fullName\n          }\n          email\n        }\n      }\n      batchId\n      bidProcessSchedule {\n        schedules {\n          endTime\n          estimatedDayPeriod\n          startTime\n          day\n        }\n        id\n        numOfSessions\n        startDate\n        timezone\n      }\n      defaultBidSetting {\n        askForBid\n        highestBidAmount\n        lowestBidAmount\n        offeredAmount\n      }\n      defaultBidSettingId\n      description\n      finalAmount\n      highestBidOffer\n      id\n      insertedAt\n      lowestBidOffer\n      status\n      title\n      updatedAt\n      deadline\n    }\n  }\n}\n",
+						"variables": "{\n  \"filter\": {\n    \"withStatus\": [\n      \"ACTIVE\"\n    ]\n  },\n  \"paginationOpts\": {}\n}"
+					}
+				},
+				"url": {
+					"raw": "https://api-staging.env.enthu.com/graphql",
+					"protocol": "https",
+					"host": [
+						"api-staging",
+						"env",
+						"enthu",
+						"com"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listAttendance",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query listRoomsPaginated($filter: RoomFilter, $paginationOpts: RoomPaginationOpts, $meetingFilter: MeetingAggregateFilter, $appActivityFilter: AppActivityFilter) {\n  listRoomsPaginated(filter: $filter, paginationOpts: $paginationOpts) {\n    pageInfo {\n      after\n      totalCount\n      before\n      hasNextPage\n      limit\n    }\n    result {\n      id\n      roomStatus\n      notes\n      startDate\n      endDate\n      batch {\n        chatGroup {\n          channelUrl\n          id\n          userChatGroups {\n            role\n            id\n            insertedAt\n            user {\n              userEducationCount\n              userExperienceCount\n              userTagCount\n              zohoRecruitId\n              userMembership {\n                membership {\n                  title\n                }\n              }\n              appLastActiveData {\n                isActiveInLastFifteenDays\n              }\n              id\n              email\n              phoneNumber\n              chatUserId\n              currentLocation {\n                name\n                emoji\n              }\n              username\n              appActivity {\n                updatedAt\n                appVersion\n              }\n              profile {\n                avatarUrl\n                fullName\n                gender\n                dob\n              }\n              id\n            }\n          }\n        }\n        id\n        name\n        displayName\n        course {\n          title\n        }\n        courseTemplate {\n          name\n        }\n        product {\n          title\n        }\n      }\n      userRole\n      course {\n        title\n      }\n      meetingAggregates(filter: $meetingFilter) {\n        id\n        attendanceStatus\n        hasInbetweenEventsIssue\n        earlyLeaveLossDuration\n        effectiveFirstJoinDatetime\n        effectiveLastLeaveDatetime\n        inbetweenLossDuration\n        lateJoinLossDuration\n        totalPresentDuration\n        reviewStatus\n        totalLossDuration\n        note\n        role\n        userSummary {\n          id\n          msgText\n        }\n        insertedBy {\n          id\n          email\n        }\n        updatedBy {\n          id\n          email\n        }\n        user {\n          id\n          appLastActiveData(filter: $appActivityFilter) {\n            isActiveInLastFifteenDays\n            deviceType\n          }\n          email\n          username\n          phoneNumberVerified\n          appDownloaded\n          currentLocation {\n            name\n            emoji\n          }\n          country {\n            name\n            emoji\n          }\n          profile {\n            fullName\n            avatarUrl\n            dob\n            gender\n          }\n        }\n      }\n    }\n  }\n}\n",
+						"variables": "{\n  \"filter\": {\n    \"meetingBooked\": true,\n    \"startDate\": [\n      \">= 2025-05-18T00:00:00+05:45\"\n    ],\n    \"endDate\": [\n      \"<= 2025-05-23T15:17:53+05:45\"\n    ]\n  },\n  \"appActivityFilter\": {\n    \"withDeviceType\": [\n      \"ANDROID\",\n      \"IOS\",\n      \"DESKTOP\"\n    ]\n  },\n  \"paginationOpts\": {\n    \"limit\": 20,\n    \"sortDirection\": \"DESC\",\n    \"cursorFields\": [\n      \"START_DATE\",\n      \"ID\"\n    ]\n  },\n  \"meetingFilter\": {}\n}"
+					}
+				},
+				"url": {
+					"raw": "https://api-staging.env.enthu.com/graphql",
+					"protocol": "https",
+					"host": [
+						"api-staging",
+						"env",
+						"enthu",
+						"com"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listHolidays",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query ListPaginatedHolidays($filter: HolidayFilter, $paginationOpts: PaginationOpts) {\n  listPaginatedHolidays(filter: $filter, paginationOpts: $paginationOpts) {\n    pageInfo {\n      after\n      totalCount\n      before\n      hasNextPage\n      limit\n    }\n    result {\n      country {\n        emoji\n        id\n        name\n      }\n      primaryType\n      date\n      id\n      description\n      locations\n      name\n    }\n  }\n}\n",
+						"variables": "{\n  \"filter\": {\n    \"withCountryId\": [\n      \"dcf4794c-6944-49ad-94f7-754f713ac1ad\",\n      \"d1181bbe-d262-4894-a08a-df999313fa76\"\n    ],\n    \"date\": [\n      \">= 2025-04-27\",\n      \"<= 2025-06-08\"\n    ]\n  },\n  \"paginationOpts\": {\n    \"limit\": 1000\n  }\n}"
+					}
+				},
+				"url": {
+					"raw": "https://api-staging.env.enthu.com/graphql",
+					"protocol": "https",
+					"host": [
+						"api-staging",
+						"env",
+						"enthu",
+						"com"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listUsers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query ListPaginatedUser($filter: UserFilter, $paginationOpts: PaginationOpts) {\n  listPaginatedUser(filter: $filter, paginationOpts: $paginationOpts) {\n    pageInfo {\n      after\n      totalCount\n      before\n      hasNextPage\n      limit\n    }\n    result {\n      status\n      email\n      emailVerified\n      id\n      userEducationCount\n      userExperienceCount\n      userTagCount\n      parentId\n      phoneNumber\n      insertedAt\n      appDownloaded\n      phoneNumberVerified\n      familyMembers {\n        family {\n          status\n          title\n          id\n          familyMembers {\n            status\n            id\n          }\n        }\n        status\n        role\n        id\n      }\n      roles\n      role\n      permissions\n      username\n      zohoRecruitId\n      zohoCrmId\n      chatUserId\n      publicUserId\n      appLastActiveData {\n        lastActiveDatetime\n        isActiveInLastFifteenDays\n        deviceType\n      }\n      entityTags {\n        entityId\n        entityType\n        id\n        value\n      }\n      roleAssignments {\n        activationDate\n        country\n        expirationDate\n        id\n        isArchived\n        module\n        role\n        userId\n      }\n      profile {\n        avatarUrl\n        bio\n        dob\n        lName\n        fName\n        fullName\n        timezoneData {\n          zoneName\n          id\n        }\n        gender\n        location {\n          country\n        }\n        userProfileLanguages {\n          language {\n            name\n          }\n          listening\n          reading\n          speaking\n          writing\n        }\n        userSocialLinks {\n          platform\n          url\n        }\n      }\n      country {\n        emoji\n        name\n        id\n      }\n      currentLocation {\n        emoji\n        name\n      }\n      host {\n        id\n        supportChatGroup {\n          clubMembers {\n            user {\n              id\n            }\n          }\n          channelUrl\n        }\n      }\n      upvoteCounts\n      userMembership {\n        membership {\n          title\n        }\n      }\n    }\n  }\n}\n",
+						"variables": "{\n  \"filter\": {},\n  \"paginationOpts\": {\n    \"limit\": 20\n  }\n}"
 					}
 				},
 				"url": {
